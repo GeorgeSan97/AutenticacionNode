@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { AuthController } from './controller';
 
 export class AuthRoutes{
 
@@ -6,15 +7,11 @@ export class AuthRoutes{
     static get routes():Router{
         const router = Router();
 
-        //aquí voy a definir mis rutas principales
-        router.use('/login',(req,res) =>{
-            res.json('Login');
-        });
+        const controller = new AuthController();
 
-        
-        router.use('/register', (req,res) =>{
-            res.json('Register');
-        });;
+        //aquí voy a definir mis rutas principales
+        router.use('/login',(req,resp) => controller.loginUser(req,resp));
+        router.use('/register', (req,res) => controller.registerUser(req,res)); 
 
         return router;
     }
