@@ -10,6 +10,7 @@ export class AuthController{
         res.json('registerUser controller');
     }
 
+    
     //login
     loginUser = (req: Request, res: Response ) => {
         res.json('loginUser controller');
